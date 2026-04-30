@@ -1,0 +1,32 @@
+---
+import { team } from "../data/site";
+---
+
+<section class="section" id="equipo">
+  <div class="container">
+    <div class="eyebrow">El equipo</div>
+    <h2 class="title">Quienes están detrás del desarrollo.</h2>
+    <p class="lead" style="margin-bottom: 48px;">
+      Un equipo pequeño y multidisciplinario: ingeniería matemática para la lógica de matching,
+      periodismo y diseño UX/UI para la voz y la experiencia de marca.
+    </p>
+
+    <div class="member-grid">
+      {team.map((p) => (
+        <div class="card">
+          <div class="member">
+            <div class="member-avatar">
+              {/* Si existe imagen real, se renderiza; si no, fallback con iniciales */}
+              <span>{p.avatarFallback}</span>
+            </div>
+            <div>
+              <h3>{p.name}</h3>
+              <div class="role">{p.role}</div>
+              <p>{p.bio}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

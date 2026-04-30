@@ -1,0 +1,71 @@
+---
+import { metrics, fuentesList, categoriasList, generosTop } from "../data/site";
+
+const metricList = [
+  metrics.eventos,
+  metrics.categorias,
+  metrics.subcategorias,
+  metrics.fuentes,
+];
+---
+
+<section class="section" id="metricas">
+  <div class="container">
+    <div class="eyebrow">Tracción del MVP</div>
+    <h2 class="title">Catálogo real, no maquetas.</h2>
+    <p class="lead" style="margin-bottom: 48px;">
+      Snapshot al 30 de abril de 2026. Datos consolidados desde las fuentes integradas de
+      ticketería en Chile.
+    </p>
+
+    <div class="grid grid-4" style="margin-bottom: 64px;">
+      {metricList.map((m) => (
+        <div class="card metric">
+          <div class="num">{m.value}</div>
+          <div class="label">{m.label}</div>
+          <div class="detail">{m.detail}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="grid grid-2" style="gap: 32px;">
+      <div>
+        <h3 style="color: var(--white); font-size: 18px; margin-bottom: 16px;">
+          Categorías cubiertas
+        </h3>
+        <div class="chip-row">
+          {categoriasList.map((c) => (
+            <span class="chip">
+              {c.emoji} {c.name} · <strong>{c.count}</strong>
+            </span>
+          ))}
+        </div>
+
+        <h3 style="color: var(--white); font-size: 18px; margin: 32px 0 16px;">
+          Géneros y subcategorías
+        </h3>
+        <div class="chip-row">
+          {generosTop.map((g) => <span class="chip">{g}</span>)}
+        </div>
+      </div>
+
+      <div>
+        <h3 style="color: var(--white); font-size: 18px; margin-bottom: 16px;">
+          Fuentes integradas
+        </h3>
+        <p style="color: var(--text-light); font-size: 15px; margin-bottom: 20px;">
+          Catálogo unificado desde los principales agregadores de eventos de Chile, normalizado y
+          actualizado de forma automática.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          {fuentesList.map((f) => (
+            <div class="card" style="padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 600;">{f.name}</span>
+              <span style="color: var(--purple-light); font-weight: 700;">{f.events} eventos</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

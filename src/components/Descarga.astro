@@ -1,0 +1,56 @@
+---
+import { site } from "../data/site";
+
+// QR que apunta al APK. Generado on-the-fly por api.qrserver.com.
+// Reemplazar el host en producción si se quiere un QR estático.
+const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&color=07050E&bgcolor=FFFFFF&data=${encodeURIComponent(site.apkUrl)}`;
+---
+
+<section class="section" id="descargar" style="background: linear-gradient(180deg, transparent 0%, rgba(123, 57, 236, 0.08) 100%);">
+  <div class="container">
+    <div class="eyebrow">Probar el MVP</div>
+    <h2 class="title">Descarga la app y pruébala tú mismo.</h2>
+    <p class="lead" style="margin-bottom: 40px;">
+      Build de preview para Android. Descarga el APK directamente o escanea el QR desde tu
+      celular. Pronto disponible en Play Store y App Store.
+    </p>
+
+    <div class="download-wrap">
+      <div>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 24px;">
+          <a href={site.apkUrl} class="btn btn-primary" download>
+            Descargar APK
+          </a>
+          <span class="hero-version">{site.apkVersion}</span>
+        </div>
+
+        <div class="card" style="max-width: 560px;">
+          <h3 style="color: var(--white); font-size: 16px; margin-bottom: 12px;">
+            Cómo instalarla
+          </h3>
+          <ol style="color: var(--text-light); padding-left: 20px; line-height: 1.9; font-size: 14.5px;">
+            <li>Toca <strong style="color: var(--purple-light);">Descargar APK</strong> desde tu Android.</li>
+            <li>
+              Si Chrome o tu navegador advierte sobre el archivo, elige
+              <em>Mantener</em> y luego ábrelo.
+            </li>
+            <li>
+              Activa
+              <strong style="color: var(--purple-light);">Permitir instalación de fuentes desconocidas</strong>
+              cuando Android lo pida (es solo para esta vez).
+            </li>
+            <li>Confirma la instalación y abre Trivux desde el cajón de apps.</li>
+          </ol>
+          <p style="color: var(--text-sec); font-size: 13px; margin-top: 14px;">
+            Versión Android únicamente. iOS (TestFlight) llega después del cierre de la ronda.
+          </p>
+        </div>
+      </div>
+
+      <div class="qr-card">
+        <img src={qrUrl} alt="QR para descargar el APK de Trivux" />
+        <span>Escanea con tu Android</span>
+      </div>
+    </div>
+  </div>
+</section>
