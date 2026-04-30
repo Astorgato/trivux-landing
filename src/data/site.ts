@@ -7,9 +7,10 @@ export const site = {
   domain: "trivux.cl",
   email: "trivux.app@gmail.com",
 
-  // URL permanente: GitHub Releases ("latest" siempre apunta al release más nuevo).
-  // Para publicar una nueva versión: subir un nuevo release con el APK como asset.
-  apkUrl: "https://github.com/Astorgato/trivux-landing/releases/latest/download/trivux-mvp.apk",
+  // URL del release fijo por tag (el flag de "Pre-release" hace que /latest/ no resuelva).
+  // Cuando se quite el prerelease flag, se puede volver a:
+  //   https://github.com/Astorgato/trivux-landing/releases/latest/download/trivux-mvp.apk
+  apkUrl: "https://github.com/Astorgato/trivux-landing/releases/download/v0.1.0-mvp/trivux-mvp.apk",
   apkVersion: "MVP · v0.1.0 Preview · Build 5972af37",
 
   github: "https://github.com/Astorgato/trivux-landing",
