@@ -7,11 +7,10 @@ export const site = {
   domain: "trivux.cl",
   email: "trivux.app@gmail.com",
 
-  // URL directo del APK servido por Expo (build de preview EAS).
-  // Cuando se cree el release en GitHub, reemplazar por:
-  // https://github.com/Astorgato/trivux-landing/releases/latest/download/trivux.apk
-  apkUrl: "https://expo.dev/artifacts/eas/c3CMJ6hgpMTpkwHB3Umtne.apk",
-  apkVersion: "MVP · v1.0.0 Preview · Build 5972af37",
+  // URL permanente: GitHub Releases ("latest" siempre apunta al release más nuevo).
+  // Para publicar una nueva versión: subir un nuevo release con el APK como asset.
+  apkUrl: "https://github.com/Astorgato/trivux-landing/releases/latest/download/trivux-mvp.apk",
+  apkVersion: "MVP · v0.1.0 Preview · Build 5972af37",
 
   github: "https://github.com/Astorgato/trivux-landing",
 };
