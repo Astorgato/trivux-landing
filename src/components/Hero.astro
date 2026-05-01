@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+import EventosMockup from "./EventosMockup.astro";
 ---
 
 <section class="hero" id="top">
@@ -22,10 +23,6 @@ import { site } from "../data/site";
         <span class="hero-version">{site.apkVersion}</span>
       </div>
     </div>
-    <div class="hero-frame">
-      <img src="/assets/logo-trivux.png" alt="Trivux preview" />
-      <strong style="color: var(--purple-light); font-size: 14px; letter-spacing: 1.2px; text-transform: uppercase;">Pronto aquí</strong>
-      <p>Mockups y video del flujo principal del producto.</p>
-    </div>
+    <EventosMockup />
   </div>
 </section>

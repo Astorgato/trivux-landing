@@ -1,5 +1,33 @@
 ---
 import { team } from "../data/site";
+
+// Detecta en build time qué fotos de equipo existen en /public/assets/team/
+// para renderizar <img> si están, o las iniciales como fallback.
+const teamImages = import.meta.glob("/public/assets/team/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+function avatarFor(filename: string): string | null {
+  const key = `/public/assets/team/${filename}`;
+  const url = (teamImages as Record<string, string>)[key];
+  return url || null;
+}
+
+const teamWithImages = team.map((p) => {
+  // Acepta png, jpg, jpeg, webp con el nombre base del avatar (sin extensión).
+  const base = p.avatar.replace(/^.*\//, "").replace(/\.[^.]+$/, "");
+  const found =
+    avatarFor(`${base}.png`) ||
+    avatarFor(`${base}.jpg`) ||
+    avatarFor(`${base}.jpeg`) ||
+    avatarFor(`${base}.webp`);
+  return {
+    ...p,
+    imageUrl: found ? p.avatar : null, // si existe, exponemos la ruta pública
+  };
+});
 ---
 
 <section class="section" id="equipo">
@@ -12,12 +40,15 @@ import { team } from "../data/site";
     </p>
 
     <div class="member-grid">
-      {team.map((p) => (
+      {teamWithImages.map((p) => (
         <div class="card">
           <div class="member">
             <div class="member-avatar">
-              {/* Si existe imagen real, se renderiza; si no, fallback con iniciales */}
-              <span>{p.avatarFallback}</span>
+              {p.imageUrl ? (
+                <img src={p.imageUrl} alt={p.name} />
+              ) : (
+                <span>{p.avatarFallback}</span>
+              )}
             </div>
             <div>
               <h3>{p.name}</h3>
