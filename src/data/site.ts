@@ -10,8 +10,8 @@ export const site = {
   // URL del release fijo por tag (el flag de "Pre-release" hace que /latest/ no resuelva).
   // Cuando se quite el prerelease flag, se puede volver a:
   //   https://github.com/Astorgato/trivux-landing/releases/latest/download/trivux-mvp.apk
-  apkUrl: "https://github.com/Astorgato/trivux-landing/releases/download/v0.1.0-mvp/trivux-mvp.apk",
-  apkVersion: "MVP · v0.1.0 Preview · Build 5972af37",
+  apkUrl: "https://github.com/Astorgato/trivux-landing/releases/download/v0.1.1-mvp/trivux-1.0.1.apk",
+  apkVersion: "MVP · v0.1.1 Preview",
 
   github: "https://github.com/Astorgato/trivux-landing",
 };
