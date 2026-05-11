@@ -101,6 +101,13 @@ import { b2b } from "../data/site";
     font-family: inherit;
     resize: vertical;
   }
+  /* El menú desplegado del <select> hereda el color blanco del padre pero el fondo
+     por defecto del SO es claro → texto blanco sobre blanco. Forzamos fondo oscuro
+     en las options para que se lean. */
+  .field select option {
+    background: var(--card, #161620);
+    color: var(--white);
+  }
   .field textarea { min-height: 96px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }

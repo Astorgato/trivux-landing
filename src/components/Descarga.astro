@@ -1,9 +1,10 @@
 ---
 import { site } from "../data/site";
 
-// QR que apunta al APK. Generado on-the-fly por api.qrserver.com.
-// Reemplazar el host en producción si se quiere un QR estático.
-const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&color=07050E&bgcolor=FFFFFF&data=${encodeURIComponent(site.apkUrl)}`;
+// QRs generados on-the-fly por api.qrserver.com.
+const qrAndroidUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&color=07050E&bgcolor=FFFFFF&data=${encodeURIComponent(site.apkUrl)}`;
+// iOS aún no tiene build: el QR queda como placeholder al dominio.
+const qrIosUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&color=07050E&bgcolor=FFFFFF&data=${encodeURIComponent("https://" + site.domain)}`;
 ---
 
 <section class="section" id="descargar" style="background: linear-gradient(180deg, transparent 0%, rgba(123, 57, 236, 0.08) 100%);">
@@ -11,25 +12,49 @@ const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8
     <div class="eyebrow">Probar el MVP</div>
     <h2 class="title">Descarga la app y pruébala tú mismo.</h2>
     <p class="lead" style="margin-bottom: 40px;">
-      Build de preview para Android. Descarga el APK directamente o escanea el QR desde tu
-      celular. Pronto disponible en Play Store y App Store.
+      Build de preview para Android. Descarga el APK directamente o muestra el QR para
+      escanearlo desde otro dispositivo. Pronto disponible en App Store.
     </p>
 
     <div class="download-wrap">
       <div>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 24px;">
-          <a href={site.apkUrl} class="btn btn-primary" download>
-            Descargar APK
-          </a>
-          <span class="hero-version">{site.apkVersion}</span>
+        <div class="download-buttons">
+          <div class="download-col">
+            <a href={site.apkUrl} class="btn btn-primary download-cta" download>
+              Descargar APK Android
+            </a>
+            <button type="button" class="qr-toggle" data-target="qr-android" aria-expanded="false">
+              Mostrar QR
+            </button>
+            <div class="qr-inline" id="qr-android" hidden>
+              <img src={qrAndroidUrl} alt="QR para descargar el APK de Trivux en Android" />
+              <span>Escanea desde tu Android</span>
+            </div>
+          </div>
+
+          <div class="download-col">
+            <button type="button" class="btn btn-primary download-cta is-disabled" disabled aria-disabled="true">
+              Descargar APK iOS
+              <small>Próximamente</small>
+            </button>
+            <button type="button" class="qr-toggle" data-target="qr-ios" aria-expanded="false" disabled>
+              Mostrar QR
+            </button>
+            <div class="qr-inline" id="qr-ios" hidden>
+              <img src={qrIosUrl} alt="QR placeholder iOS (build en preparación)" />
+              <span>Disponible próximamente</span>
+            </div>
+          </div>
         </div>
+
+        <span class="hero-version" style="display: inline-block; margin: 0 0 24px;">{site.apkVersion}</span>
 
         <div class="card" style="max-width: 560px;">
           <h3 style="color: var(--white); font-size: 16px; margin-bottom: 12px;">
             Cómo instalarla
           </h3>
           <ol style="color: var(--text-light); padding-left: 20px; line-height: 1.9; font-size: 14.5px;">
-            <li>Toca <strong style="color: var(--purple-light);">Descargar APK</strong> desde tu Android.</li>
+            <li>Toca <strong style="color: var(--purple-light);">Descargar APK Android</strong> desde tu celular.</li>
             <li>
               Si Chrome o tu navegador advierte sobre el archivo, elige
               <em>Mantener</em> y luego ábrelo.
@@ -46,11 +71,111 @@ const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8
           </p>
         </div>
       </div>
-
-      <div class="qr-card">
-        <img src={qrUrl} alt="QR para descargar el APK de Trivux" />
-        <span>Escanea con tu Android</span>
-      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .download-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  @media (max-width: 640px) {
+    .download-buttons { grid-template-columns: 1fr; }
+  }
+
+  .download-col { display: flex; flex-direction: column; gap: 10px; }
+
+  .download-cta {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    padding: 14px 18px;
+    font-weight: 700;
+  }
+  .download-cta small {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .download-cta.is-disabled {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-light);
+    cursor: not-allowed;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .qr-toggle {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--purple-light, #BF80FC);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .qr-toggle:hover:not(:disabled) {
+    background: rgba(191, 128, 252, 0.1);
+    border-color: rgba(191, 128, 252, 0.4);
+    color: var(--white);
+  }
+  .qr-toggle[aria-expanded="true"] {
+    background: rgba(191, 128, 252, 0.15);
+    border-color: rgba(191, 128, 252, 0.5);
+    color: var(--white);
+  }
+  .qr-toggle:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .qr-inline {
+    background: var(--white);
+    border-radius: var(--radius-lg, 16px);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .qr-inline[hidden] { display: none; }
+  .qr-inline img { width: 180px; height: 180px; }
+  .qr-inline span { color: #07050E; font-weight: 600; font-size: 12.5px; text-align: center; }
+</style>
+
+<script>
+  // Toggle de cada QR: cada botón controla solo su panel (no son exclusivos).
+  document.querySelectorAll<HTMLButtonElement>(".qr-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      const targetId = btn.dataset.target;
+      if (!targetId) return;
+      const panel = document.getElementById(targetId);
+      if (!panel) return;
+      const isHidden = panel.hasAttribute("hidden");
+      if (isHidden) {
+        panel.removeAttribute("hidden");
+        btn.setAttribute("aria-expanded", "true");
+        btn.textContent = "Ocultar QR";
+      } else {
+        panel.setAttribute("hidden", "");
+        btn.setAttribute("aria-expanded", "false");
+        btn.textContent = "Mostrar QR";
+      }
+    });
+  });
+</script>
