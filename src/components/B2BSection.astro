@@ -1,0 +1,159 @@
+---
+import { b2b } from "../data/site";
+---
+
+<section class="section" id="b2b">
+  <div class="container">
+    <div class="eyebrow">{b2b.eyebrow}</div>
+    <h2 class="title">{b2b.title}</h2>
+    <p class="lead" style="margin-bottom: 40px;">{b2b.lead}</p>
+
+    <div class="b2b-grid">
+      <div class="b2b-bullets">
+        {b2b.bullets.map((b) => (
+          <div class="card b2b-bullet">
+            <h3>{b.title}</h3>
+            <p>{b.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <form id="b2b-form" class="card b2b-form" novalidate>
+        <h3 class="form-title">Contactanos</h3>
+        <p class="form-sub">Te respondemos dentro de las próximas 48 horas hábiles.</p>
+
+        <label class="field">
+          <span>Tipo de contacto</span>
+          <select name="tipo" required>
+            {b2b.tipos.map((t) => (
+              <option value={t.value}>{t.label}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Empresa</span>
+          <input type="text" name="empresa" maxlength="100" required />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" maxlength="80" required />
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" maxlength="120" required />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Mensaje</span>
+          <textarea name="mensaje" rows="5" minlength="20" maxlength="4000" required
+            placeholder="Contanos qué evento o iniciativa querés impulsar y cómo te imaginás trabajando con Trivux."></textarea>
+        </label>
+
+        <!-- Honeypot anti-bot: oculto visualmente, invisible para humanos. -->
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" />
+
+        <button type="submit" class="btn-primary">Enviar</button>
+
+        <p id="b2b-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .b2b-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 880px) {
+    .b2b-grid { grid-template-columns: 1fr; }
+  }
+
+  .b2b-bullets { display: flex; flex-direction: column; gap: 16px; }
+  .b2b-bullet h3 {
+    color: var(--white); font-size: 16px; margin: 0 0 6px; font-weight: 700;
+  }
+  .b2b-bullet p { color: var(--text-light); font-size: 14px; margin: 0; line-height: 1.5; }
+
+  .b2b-form { display: flex; flex-direction: column; gap: 12px; }
+  .form-title { color: var(--white); margin: 0; font-size: 18px; }
+  .form-sub   { color: var(--text-light); margin: 0 0 8px; font-size: 13px; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field > span {
+    color: var(--purple-light, #BF80FC);
+    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 700;
+  }
+  .field input, .field select, .field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+  }
+  .field textarea { min-height: 96px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #7B39EC, #BF80FC);
+    color: #fff; border: 0; border-radius: 12px;
+    padding: 14px 16px; font-size: 15px; font-weight: 700; cursor: pointer;
+    margin-top: 4px;
+  }
+  .btn-primary[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+  .form-status { min-height: 18px; font-size: 13px; margin: 4px 0 0; }
+  .form-status[data-state="ok"]    { color: #22C55E; }
+  .form-status[data-state="error"] { color: #F04545; }
+</style>
+
+<script>
+  const form = document.getElementById('b2b-form') as HTMLFormElement | null;
+  const status = document.getElementById('b2b-status') as HTMLElement | null;
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.removeAttribute('data-state');
+      status.textContent = 'Enviando…';
+
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      button.disabled = true;
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        const res = await fetch('/api/b2b', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          status.dataset.state = 'error';
+          status.textContent = body?.error || 'No se pudo enviar. Intentá de nuevo.';
+        } else {
+          status.dataset.state = 'ok';
+          status.textContent = '¡Gracias! Recibimos tu mensaje y te respondemos pronto.';
+          form.reset();
+        }
+      } catch {
+        status.dataset.state = 'error';
+        status.textContent = 'Error de red. Intentá más tarde.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+</script>

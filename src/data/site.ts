@@ -102,6 +102,33 @@ export const features = [
   },
 ];
 
+export const b2b = {
+  eyebrow: "Trivux para empresas",
+  title: "Llevá tu evento al público correcto.",
+  lead:
+    "Productoras, marcas, ticketeras: ayudanos a coordinar a la gente que ya quiere ir a sus eventos. Los promotores destacados aparecen primero en el feed; las ticketeras pueden integrar entradas y métricas reales.",
+  bullets: [
+    {
+      title: "Destacar tu evento",
+      body: "Aparecé arriba en el feed de las personas con afinidad por tu género o tipo de evento.",
+    },
+    {
+      title: "Integración de entradas",
+      body: "Conexión con TicketPlus, Passline, PuntoTicket y Eventbrite — y futuras integraciones a la carta.",
+    },
+    {
+      title: "Audiencia segmentada",
+      body: "Música, intereses, zona, edad. El score de compatibilidad te lleva al público que ya quiere ir.",
+    },
+  ],
+  tipos: [
+    { value: "promotor", label: "Productora / Promotor" },
+    { value: "marca", label: "Marca o sponsor" },
+    { value: "ticketera", label: "Ticketera" },
+    { value: "otro", label: "Otro" },
+  ],
+};
+
 export const team = [
   {
     name: "Cristián Astorga",
