@@ -1,10 +1,15 @@
 // Vercel Function que recibe el form B2B y lo reenvía por email a b2b@trivux.cl.
 // Vercel detecta automáticamente cualquier archivo en /api/ a nivel raíz del
 // proyecto y lo expone como /api/<nombre>. No requiere adaptador en Astro.
-
+//
+// Corre en Edge Runtime para usar la firma estándar fetch (Request → Response)
+// y `globalThis.fetch` sin polyfills ni dependencias.
+//
 // Variables de entorno necesarias (configurar en Vercel):
 //   RESEND_API_KEY  -> API key de https://resend.com
 //   B2B_TO_EMAIL    -> destinatario (default: b2b@trivux.cl si no se setea)
+
+export const config = { runtime: 'edge' };
 
 type Payload = {
   empresa?: string;
@@ -100,7 +105,7 @@ export default async function handler(req: Request): Promise<Response> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Trivux B2B <onboarding@resend.dev>',
+        from: 'Trivux B2B <noreply@trivux.cl>',
         to: [to],
         reply_to: email,
         subject,
