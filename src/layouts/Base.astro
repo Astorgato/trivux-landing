@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { site } from "../data/site";
 import logoOg from "../assets/logo-trivux.png";
+import logoFavicon from "../assets/logo-trivux-light.png";
 
 interface Props {
   title?: string;
@@ -39,7 +40,8 @@ const ogImageUrl = new URL(logoOg.src, Astro.site ?? `https://${site.domain}`).h
     <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href={logoFavicon.src} />
+    <link rel="apple-touch-icon" href={logoFavicon.src} />
 
     <!-- Inter (misma tipografía que la app) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
