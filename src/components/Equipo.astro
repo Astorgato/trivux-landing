@@ -1,16 +1,17 @@
 ---
 import { team } from "../data/site";
 
-// Detecta en build time qué fotos de equipo existen en /public/assets/team/
-// para renderizar <img> si están, o las iniciales como fallback.
-const teamImages = import.meta.glob("/public/assets/team/*.{png,jpg,jpeg,webp}", {
+// Detecta en build time qué fotos de equipo existen en /src/assets/team/.
+// Astro hashea estas URLs por build, lo que invalida la caché de CDN
+// automáticamente cuando se actualiza una foto.
+const teamImages = import.meta.glob("/src/assets/team/*.{png,jpg,jpeg,webp}", {
   eager: true,
   query: "?url",
   import: "default",
 });
 
 function avatarFor(filename: string): string | null {
-  const key = `/public/assets/team/${filename}`;
+  const key = `/src/assets/team/${filename}`;
   const url = (teamImages as Record<string, string>)[key];
   return url || null;
 }
@@ -25,7 +26,7 @@ const teamWithImages = team.map((p) => {
     avatarFor(`${base}.webp`);
   return {
     ...p,
-    imageUrl: found ? p.avatar : null, // si existe, exponemos la ruta pública
+    imageUrl: found, // URL hasheada por Astro o null si no existe
   };
 });
 ---
