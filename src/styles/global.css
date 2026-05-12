@@ -401,6 +401,9 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .footer a { color: var(--text-sec); }
 [data-theme="light"] .footer a:hover { color: var(--text-prim); }
 
+/* Captura cualquier inline style="color: var(--white)" en modo claro */
+[data-theme="light"] [style*="var(--white)"] { color: var(--purple) !important; }
+
 /* Transiciones suaves al cambiar tema */
 body, .header, .card, .chip, .feature .icon, .mv .pill, .btn-secondary {
   transition: background 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;

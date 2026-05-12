@@ -125,6 +125,20 @@ import { b2b } from "../data/site";
   .form-status { min-height: 18px; font-size: 13px; margin: 4px 0 0; }
   .form-status[data-state="ok"]    { color: #22C55E; }
   .form-status[data-state="error"] { color: #F04545; }
+
+  :global([data-theme="light"]) .b2b-bullet h3 { color: var(--purple); }
+  :global([data-theme="light"]) .form-title { color: var(--purple); }
+  :global([data-theme="light"]) .field input,
+  :global([data-theme="light"]) .field select,
+  :global([data-theme="light"]) .field textarea {
+    color: var(--text-prim);
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.14);
+  }
+  :global([data-theme="light"]) .field select option {
+    background: #fff;
+    color: var(--text-prim);
+  }
 </style>
 
 <script>

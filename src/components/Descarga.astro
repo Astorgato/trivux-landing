@@ -167,6 +167,22 @@ const qrIosUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margi
   .qr-inline[hidden] { display: none; }
   .qr-inline img { width: 180px; height: 180px; }
   .qr-inline span { color: #07050E; font-weight: 600; font-size: 12.5px; text-align: center; }
+
+  :global([data-theme="light"]) .qr-toggle {
+    border-color: rgba(0, 0, 0, 0.18);
+    color: var(--purple);
+  }
+  :global([data-theme="light"]) .qr-toggle:hover:not(:disabled),
+  :global([data-theme="light"]) .qr-toggle[aria-expanded="true"] {
+    color: var(--purple);
+    background: rgba(123, 57, 236, 0.08);
+    border-color: rgba(123, 57, 236, 0.3);
+  }
+  :global([data-theme="light"]) .download-cta.is-disabled {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--text-light);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
 </style>
 
 <script>
