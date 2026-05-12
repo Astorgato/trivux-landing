@@ -49,6 +49,17 @@ const qrIosUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margi
 
         <span class="hero-version" style="display: inline-block; margin: 0 0 24px;">{site.apkVersion}</span>
 
+        <div class="card upgrade-warning" style="max-width: 560px; margin-bottom: 16px; border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.06);">
+          <h3 style="color: #FBBF24; font-size: 15px; margin-bottom: 8px;">
+            ¿Ya tenías una versión anterior?
+          </h3>
+          <p style="color: var(--text-light); font-size: 14px; line-height: 1.6;">
+            La firma del APK v1.1.0 cambió respecto a v1.0.1. Si tenías la versión anterior instalada,
+            <strong style="color: var(--white);">desinstalala primero</strong> antes de instalar la nueva
+            — si no, Android va a mostrar "App no instalada". Tu cuenta y tus matches se preservan en el servidor.
+          </p>
+        </div>
+
         <div class="card" style="max-width: 560px;">
           <h3 style="color: var(--white); font-size: 16px; margin-bottom: 12px;">
             Cómo instalarla
