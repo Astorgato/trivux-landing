@@ -1,13 +1,15 @@
 ---
 import { site } from "../data/site";
+import logoDark from "../assets/logo-trivux.png";
+import logoLight from "../assets/logo-trivux-light.png";
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container footer-grid">
     <div class="brand" style="display: flex; align-items: center; gap: 10px; color: var(--text-prim);">
-      <img class="logo-dark" src="/assets/logo-trivux.png" alt="Trivux" />
-      <img class="logo-light" src="/assets/logo-trivux-light.png" alt="Trivux" />
+      <img class="logo-dark" src={logoDark.src} alt="Trivux" />
+      <img class="logo-light" src={logoLight.src} alt="Trivux" />
       <span style="font-weight: 700;">Trivux</span>
       <span style="color: var(--text-sec); margin-left: 8px;">
         © {year} · Hecho en Santiago, Chile.

@@ -1,12 +1,14 @@
 ---
 import { site } from "../data/site";
+import logoDark from "../assets/logo-trivux.png";
+import logoLight from "../assets/logo-trivux-light.png";
 ---
 
 <header class="header">
   <div class="container header-inner">
     <a href="#top" class="brand">
-      <img class="logo-dark" src="/assets/logo-trivux.png" alt="Trivux" />
-      <img class="logo-light" src="/assets/logo-trivux-light.png" alt="Trivux" />
+      <img class="logo-dark" src={logoDark.src} alt="Trivux" />
+      <img class="logo-light" src={logoLight.src} alt="Trivux" />
       <span>{site.name}</span>
     </a>
     <nav class="nav">
