@@ -3,7 +3,7 @@
 
 export const site = {
   name: "Trivux",
-  tagline: "No vayas solo. Encuentra a alguien que va al mismo evento.",
+  tagline: "Encuentra amigos. Comparte tus eventos. Vive la experiencia Trivux.",
   domain: "trivux.cl",
   email: "trivux.app@gmail.com",
 
