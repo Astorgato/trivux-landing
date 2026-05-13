@@ -1,0 +1,417 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "El algoritmo benevolente — Trivux";
+const description =
+  "Hay una razón por la que las apps de citas no funcionan. No es que seas exigente. Es que el algoritmo no está diseñado para que conectes.";
+
+const evidencia = [
+  {
+    num: "01",
+    claim: "El 0,6% de los likes de hombres terminan en match.",
+    detalle:
+      "Frente al 10% de las mujeres. El swipeo masivo no es accidental: es el equilibrio que la app necesita para que nadie se sienta del todo satisfecho.",
+    fuente: "Tyson, Perta, Haddadi & Seto (2016), ASONAM",
+    doi: "arXiv:1607.01952",
+  },
+  {
+    num: "02",
+    claim: "Una minoría concentra casi toda la atención.",
+    detalle:
+      "El 'mercado' de las apps de citas está más desigualmente distribuido que la mayoría de economías nacionales. Los algoritmos amplifican esta concentración en lugar de corregirla.",
+    fuente: "Bruch & Newman (2018), Science Advances",
+    doi: "10.1126/sciadv.aap9815",
+  },
+  {
+    num: "03",
+    claim: "El match throttling está documentado.",
+    detalle:
+      "Muchas apps restringen a propósito cuántas conexiones reales recibes para empujarte a pagar por un plan premium que 'desbloquea más oportunidades'.",
+    fuente: "Balki (2025), JMIR Formative Research",
+    doi: "10.2196/70594",
+  },
+  {
+    num: "04",
+    claim: "Cuanto más swipeas, más confías en el algoritmo — aunque te esté agotando.",
+    detalle:
+      "La fatiga de decisión que provoca la app es exactamente lo que te hace delegar en ella. Un ciclo que beneficia a la plataforma, no al usuario.",
+    fuente: "Binder, Stevic, Matthes & Thomas (2025), New Media & Society",
+    doi: "10.1177/14614448241270542",
+  },
+  {
+    num: "05",
+    claim: "Más de la mitad de usuarios reportan experiencias negativas.",
+    detalle:
+      "Los hombres en particular reportan frustración, baja autoestima y sensación de pérdida de tiempo asociadas al uso de apps de citas.",
+    fuente: "Pew Research Center (2023), Online Dating in America",
+    doi: "pewresearch.org",
+  },
+  {
+    num: "06",
+    claim: "La FTC demandó a Match Group.",
+    detalle:
+      "En 2022, la Comisión Federal de Comercio de EE.UU. demandó a Match Group por usar perfiles falsos para empujar a usuarios al modelo de pago.",
+    fuente: "FTC v. Match Group (2022)",
+    doi: "Registro público",
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <Header />
+  <main>
+    <article class="article">
+      <div class="container">
+
+        <!-- Encabezado -->
+        <header class="article-header">
+          <a href="/" class="article-back">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Volver a Trivux
+          </a>
+          <div class="eyebrow" style="margin-top: 32px;">Por qué importa el algoritmo</div>
+          <h1 class="title" style="max-width: 760px; margin-bottom: 20px;">
+            Hay una razón por la que las apps de citas no funcionan.
+          </h1>
+          <p class="lead" style="max-width: 680px; margin-bottom: 12px;">
+            Y no es que seas exigente, ni que el mercado esté difícil. Es que el algoritmo
+            no está diseñado para que conectes — está diseñado para que sigas pagando.
+          </p>
+          <p class="article-meta">5 min de lectura · 6 fuentes citadas</p>
+        </header>
+
+        <!-- Intro -->
+        <div class="article-body">
+          <p>
+            Sí, en Trivux hay swipe, super likes y premium. Esas mecánicas funcionan,
+            son divertidas, no vamos a fingir lo contrario. La diferencia está en lo
+            que decide el algoritmo por debajo: si quiere que conectes, o si quiere
+            que sigas pagando para intentarlo.
+          </p>
+
+          <!-- Bloque de dos columnas -->
+          <div class="grid grid-2 algo-compare" style="margin: 48px 0;">
+            <div class="card algo-col algo-col--egoista">
+              <div class="algo-badge algo-badge--red">Algoritmo egoísta</div>
+              <p class="algo-col__sub">La mayoría de apps</p>
+              <ul class="algo-ul">
+                <li>Decide a quién te muestra según lo que te mantenga scrolleando, no según con quién encajarías.</li>
+                <li>Te enseña perfiles que casi nunca te van a responder, porque la frustración es buena para el negocio.</li>
+                <li>Limita silenciosamente cuántos matches reales recibes (match throttling) para empujarte al pago.</li>
+                <li>Su métrica de éxito es tu tiempo dentro de la app. Si encuentras a alguien, dejas de pagar.</li>
+              </ul>
+              <blockquote class="algo-quote">
+                <p>"Las apps han pasado de facilitar encuentros offline a acumular matches para generar ingresos."</p>
+                <cite>Balki (2025), JMIR Formative Research</cite>
+              </blockquote>
+            </div>
+
+            <div class="card algo-col algo-col--benevolente">
+              <div class="algo-badge algo-badge--green">Algoritmo benevolente</div>
+              <p class="algo-col__sub">Trivux</p>
+              <ul class="algo-ul algo-ul--check">
+                <li>Decide a quién te muestra según con quién encajarías de verdad en el evento al que vas.</li>
+                <li>El contexto ya está dado: ambos eligieron estar ahí, ese mismo día. El algoritmo solo conecta los puntos.</li>
+                <li>Hay swipe, super likes y premium — porque la mecánica engancha. Pero no usamos el algoritmo para sabotear el encuentro.</li>
+                <li>Nuestra métrica de éxito es una sola: que la conexión termine ocurriendo fuera de la app.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Esto no lo decimos solo nosotros.</h2>
+          <p>
+            Hay años de investigación documentando cómo las apps tradicionales están optimizadas
+            en tu contra. Te dejamos las fuentes por si quieres profundizar — nosotros preferimos
+            construir algo distinto.
+          </p>
+        </div>
+
+        <!-- Evidencia -->
+        <div class="evidencia-grid">
+          {evidencia.map((item) => (
+            <div class="card evidencia-item">
+              <span class="evidencia-num">{item.num}</span>
+              <p class="evidencia-claim">{item.claim}</p>
+              <p class="evidencia-detalle">{item.detalle}</p>
+              <p class="evidencia-fuente">{item.fuente}</p>
+              <p class="evidencia-doi">{item.doi}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Cierre -->
+        <footer class="article-cierre">
+          <p>
+            En Trivux te puedes divertir swipeando, mandar super likes, pagar por
+            ver quién te tiró flores.
+          </p>
+          <p class="article-cierre__remate">
+            Lo que no va a pasar es que el algoritmo te esconda a la persona con la
+            que sí encajarías para venderte un mes premium.
+          </p>
+          <a href="/" class="btn btn-primary" style="margin-top: 32px;">
+            Descargar Trivux
+          </a>
+        </footer>
+
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .article {
+    padding: 64px 0 96px;
+  }
+
+  .article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-sec);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .article-back:hover { color: var(--white); }
+  [data-theme="light"] .article-back:hover { color: var(--text-prim); }
+
+  .article-meta {
+    color: var(--text-mute);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .article-body p {
+    color: var(--text-light);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .article-body h2 {
+    color: var(--white);
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+  }
+
+  [data-theme="light"] .article-body h2 { color: var(--purple); }
+
+  /* Columnas comparativas */
+  .algo-compare {
+    align-items: start;
+    max-width: 100%;
+  }
+
+  .algo-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+  }
+
+  .algo-col--egoista { border-top: 3px solid var(--red); }
+  .algo-col--benevolente { border-top: 3px solid var(--green); }
+
+  .algo-badge {
+    display: inline-flex;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .algo-badge--red {
+    background: rgba(240, 69, 69, 0.12);
+    border: 1px solid rgba(240, 69, 69, 0.3);
+    color: #f87171;
+  }
+
+  .algo-badge--green {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--green);
+  }
+
+  [data-theme="light"] .algo-badge--red {
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.25);
+    color: #dc2626;
+  }
+
+  [data-theme="light"] .algo-badge--green {
+    background: rgba(22, 163, 74, 0.08);
+    border-color: rgba(22, 163, 74, 0.25);
+    color: #16a34a;
+  }
+
+  .algo-col__sub {
+    color: var(--text-sec);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .algo-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .algo-ul li {
+    padding-left: 22px;
+    position: relative;
+    color: var(--text-light);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .algo-ul li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #f87171;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .algo-ul--check li::before {
+    content: "✓";
+    color: var(--green);
+  }
+
+  [data-theme="light"] .algo-ul li::before { color: #dc2626; }
+  [data-theme="light"] .algo-ul--check li::before { color: #16a34a; }
+  [data-theme="light"] .algo-col--egoista { border-top-color: #dc2626; }
+  [data-theme="light"] .algo-col--benevolente { border-top-color: #16a34a; }
+
+  .algo-quote {
+    border-left: 3px solid var(--border);
+    padding: 12px 0 12px 16px;
+    margin: 0;
+    font-style: italic;
+    color: var(--text-sec);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .algo-quote p { margin: 0 0 6px; }
+
+  .algo-quote cite {
+    font-style: normal;
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+
+  /* Evidencia */
+  .evidencia-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 48px 0 64px;
+  }
+
+  @media (min-width: 640px) {
+    .evidencia-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 960px) {
+    .evidencia-grid { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .evidencia-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .evidencia-num {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-mute);
+  }
+
+  .evidencia-claim {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--white);
+    padding-right: 32px;
+    margin: 0;
+  }
+
+  [data-theme="light"] .evidencia-claim { color: var(--purple); }
+
+  .evidencia-detalle {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-sec);
+    margin: 0;
+    flex: 1;
+  }
+
+  .evidencia-fuente {
+    font-size: 12px;
+    color: var(--text-sec);
+    margin: 4px 0 0;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    font-weight: 500;
+  }
+
+  .evidencia-doi {
+    font-size: 11px;
+    color: var(--text-mute);
+    font-style: italic;
+    margin: 2px 0 0;
+  }
+
+  /* Cierre */
+  .article-cierre {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    padding-top: 64px;
+  }
+
+  .article-cierre p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-sec);
+    margin-bottom: 12px;
+  }
+
+  .article-cierre__remate {
+    color: var(--white) !important;
+    font-weight: 600;
+    font-size: 20px !important;
+  }
+
+  [data-theme="light"] .article-cierre__remate { color: var(--purple) !important; }
+</style>

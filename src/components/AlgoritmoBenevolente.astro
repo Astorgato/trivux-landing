@@ -1,0 +1,188 @@
+---
+---
+
+<section class="section" id="algoritmo">
+  <div class="container">
+    <div class="eyebrow">Por qué importa el algoritmo</div>
+    <h2 class="title" style="max-width: 680px;">
+      Hay una razón por la que las apps de citas no funcionan.
+    </h2>
+    <p class="lead" style="margin-bottom: 48px;">
+      Y no es que seas exigente, ni que el mercado esté difícil. Es que el algoritmo
+      no está diseñado para que conectes — está diseñado para que sigas pagando.
+    </p>
+
+    <div class="grid grid-2 algo-grid" style="margin-bottom: 48px;">
+      <div class="card algo-card algo-card--egoista">
+        <div class="algo-pill algo-pill--red">Algoritmo egoísta</div>
+        <p class="algo-kicker">La mayoría de apps</p>
+        <ul class="algo-list">
+          <li>Te muestra perfiles que casi nunca te responderán — la frustración es buen negocio.</li>
+          <li>Limita silenciosamente cuántos matches reales recibes para empujarte al plan premium.</li>
+          <li>Su métrica de éxito es tu tiempo dentro de la app. Si encuentras a alguien, dejas de pagar.</li>
+        </ul>
+      </div>
+
+      <div class="card algo-card algo-card--benevolente">
+        <div class="algo-pill algo-pill--green">Algoritmo benevolente</div>
+        <p class="algo-kicker">Trivux</p>
+        <ul class="algo-list algo-list--check">
+          <li>Te muestra a quien encajarías de verdad en el evento al que vas.</li>
+          <li>El contexto ya está dado: ambos eligieron ese mismo evento, ese mismo día.</li>
+          <li>Nuestra única métrica de éxito: que la conexión ocurra fuera de la app.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="algo-footer">
+      <p class="algo-footer__text">
+        Hay años de investigación documentando cómo esto funciona.
+      </p>
+      <a href="/blog/algoritmo-benevolente" class="btn btn-secondary algo-cta">
+        Leer el artículo completo
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="algo-footer__meta">Con fuentes y estudios citados · 5 min de lectura</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .algo-grid {
+    align-items: start;
+  }
+
+  .algo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+  }
+
+  .algo-card--egoista {
+    border-top: 3px solid var(--red);
+  }
+
+  .algo-card--benevolente {
+    border-top: 3px solid var(--green);
+  }
+
+  .algo-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .algo-pill--red {
+    background: rgba(240, 69, 69, 0.12);
+    border: 1px solid rgba(240, 69, 69, 0.3);
+    color: #f87171;
+  }
+
+  .algo-pill--green {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--green);
+  }
+
+  .algo-kicker {
+    color: var(--text-sec);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .algo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .algo-list li {
+    padding-left: 22px;
+    position: relative;
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .algo-list li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #f87171;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .algo-list--check li::before {
+    content: "✓";
+    color: var(--green);
+  }
+
+  .algo-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  .algo-footer__text {
+    color: var(--text-sec);
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .algo-cta {
+    gap: 8px;
+  }
+
+  .algo-footer__meta {
+    color: var(--text-mute);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Modo claro */
+  [data-theme="light"] .algo-pill--red {
+    background: rgba(220, 38, 38, 0.08);
+    border-color: rgba(220, 38, 38, 0.25);
+    color: #dc2626;
+  }
+
+  [data-theme="light"] .algo-pill--green {
+    background: rgba(22, 163, 74, 0.08);
+    border-color: rgba(22, 163, 74, 0.25);
+    color: #16a34a;
+  }
+
+  [data-theme="light"] .algo-list li::before {
+    color: #dc2626;
+  }
+
+  [data-theme="light"] .algo-list--check li::before {
+    color: #16a34a;
+  }
+
+  [data-theme="light"] .algo-card--egoista {
+    border-top-color: #dc2626;
+  }
+
+  [data-theme="light"] .algo-card--benevolente {
+    border-top-color: #16a34a;
+  }
+</style>
