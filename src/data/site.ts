@@ -83,7 +83,7 @@ export const features = [
   {
     icon: "/assets/icons/chats.png",
     title: "Chat 1-a-1 y grupos",
-    body: "Cuando hay match se abre el chat por WebSocket: typing en vivo, push notifications nativas, grupos con roles (owner / admin / member) y reportes con dedupe.",
+    body: "Hacer match permite iniciar una conversación. Crea grupos con tus match para unir a gente con los mismos intereses y vivir eventos juntos.",
   },
   {
     icon: "/assets/icons/grupo.png",
@@ -93,12 +93,12 @@ export const features = [
   {
     icon: "/assets/icons/likeparty.png",
     title: "Lentes inteligentes",
-    body: "8 carruseles que reordenan el feed según afinidad: 'Cerca de ti', 'Por tu música', 'Tendencias', 'Esta semana', 'Gratis hoy', y más.",
+    body: "Te damos recomendaciones de eventos que te encantarán mediante carruseles personalizados, podrás descubrir lo que ofrece tu ciudad en: 'Cerca de ti', 'Por tu música', 'Tendencias', 'Esta semana', 'Gratis', y más.",
   },
   {
     icon: "/assets/icons/heart.png",
-    title: "Verificación y seguridad",
-    body: "OTP por email en cada login, bloqueos bidireccionales, reportes de miembros en grupos y push notifications con auto-cleanup de tokens muertos.",
+    title: "Seguridad",
+    body: "Nos importa tu seguridad, es por esto que puedes bloquear y/o reportar usuarios que se hayan pasado de la raya.",
   },
 ];
 
