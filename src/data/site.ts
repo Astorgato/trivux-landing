@@ -104,13 +104,13 @@ export const features = [
 
 export const b2b = {
   eyebrow: "Trivux para empresas",
-  title: "Llevá tu evento al público correcto.",
+  title: "Lleva tu evento al público correcto.",
   lead:
     "Productoras, marcas, ticketeras: ayudanos a coordinar a la gente que ya quiere ir a sus eventos. Los promotores destacados aparecen primero en el feed; las ticketeras pueden integrar entradas y métricas reales.",
   bullets: [
     {
-      title: "Destacar tu evento",
-      body: "Aparecé arriba en el feed de las personas con afinidad por tu género o tipo de evento.",
+      title: "Destaca tu evento",
+      body: "Aparece arriba en el feed de las personas con afinidad por tu género o tipo de evento.",
     },
     {
       title: "Integración de entradas",
@@ -131,7 +131,7 @@ export const b2b = {
 
 export const team = [
   {
-    name: "Cristián Astorga",
+    name: "Cristian Astorga",
     role: "Co-fundador · Producto y backend",
     bio: "Ingeniero Matemático especializado en transformación digital. Lidera la arquitectura técnica, el backend (FastAPI + Postgres) y la lógica de matching y scoring.",
     avatar: "/assets/team/cristian.png",
