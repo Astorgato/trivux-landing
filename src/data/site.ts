@@ -78,7 +78,7 @@ export const features = [
   {
     icon: "/assets/icons/swipe.png",
     title: "Match por afinidad",
-    body: "Filtramos personas por música, intereses, edad y zona. El score de compatibilidad pondera Jaccard sobre gustos musicales (25%), intereses (30%), edad (25%) y zona (20%).",
+    body: "El algortimo está creado para mostrar personas afines a tu perfil, considerando: música, intereses, edad y zona.",
   },
   {
     icon: "/assets/icons/chats.png",
