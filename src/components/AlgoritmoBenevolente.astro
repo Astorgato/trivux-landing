@@ -38,7 +38,7 @@
       <p class="algo-footer__text">
         Hay años de investigación documentando cómo esto funciona.
       </p>
-      <a href="/blog/algoritmo-benevolente" class="btn btn-secondary algo-cta">
+      <a href="/blog/algoritmo-benevolente" class="btn btn-primary algo-cta">
         Leer el artículo completo
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,11 +62,11 @@
   }
 
   .algo-card--egoista {
-    border-top: 3px solid var(--red);
+    border-top: 3px solid #FF51A7;
   }
 
   .algo-card--benevolente {
-    border-top: 3px solid var(--green);
+    border-top: 3px solid #67EB4E;
   }
 
   .algo-pill {
@@ -82,15 +82,15 @@
   }
 
   .algo-pill--red {
-    background: rgba(240, 69, 69, 0.12);
-    border: 1px solid rgba(240, 69, 69, 0.3);
-    color: #f87171;
+    background: rgba(255, 81, 167, 0.12);
+    border: 1px solid rgba(255, 81, 167, 0.3);
+    color: #FF51A7;
   }
 
   .algo-pill--green {
-    background: rgba(34, 197, 94, 0.12);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    color: var(--green);
+    background: rgba(103, 235, 78, 0.12);
+    border: 1px solid rgba(103, 235, 78, 0.3);
+    color: #67EB4E;
   }
 
   .algo-kicker {
@@ -122,14 +122,14 @@
     position: absolute;
     left: 0;
     top: 1px;
-    color: #f87171;
+    color: #FF51A7;
     font-size: 13px;
     font-weight: 700;
   }
 
   .algo-list--check li::before {
     content: "✓";
-    color: var(--green);
+    color: #67EB4E;
   }
 
   .algo-footer {
@@ -159,30 +159,30 @@
 
   /* Modo claro */
   [data-theme="light"] .algo-pill--red {
-    background: rgba(220, 38, 38, 0.08);
-    border-color: rgba(220, 38, 38, 0.25);
-    color: #dc2626;
+    background: rgba(212, 23, 110, 0.08);
+    border-color: rgba(212, 23, 110, 0.25);
+    color: #D4176E;
   }
 
   [data-theme="light"] .algo-pill--green {
-    background: rgba(22, 163, 74, 0.08);
-    border-color: rgba(22, 163, 74, 0.25);
-    color: #16a34a;
+    background: rgba(57, 200, 50, 0.08);
+    border-color: rgba(57, 200, 50, 0.25);
+    color: #39C832;
   }
 
   [data-theme="light"] .algo-list li::before {
-    color: #dc2626;
+    color: #D4176E;
   }
 
   [data-theme="light"] .algo-list--check li::before {
-    color: #16a34a;
+    color: #39C832;
   }
 
   [data-theme="light"] .algo-card--egoista {
-    border-top-color: #dc2626;
+    border-top-color: #D4176E;
   }
 
   [data-theme="light"] .algo-card--benevolente {
-    border-top-color: #16a34a;
+    border-top-color: #39C832;
   }
 </style>
